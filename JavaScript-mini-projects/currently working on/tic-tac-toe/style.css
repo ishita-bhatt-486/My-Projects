@@ -1,0 +1,47 @@
+.top{
+    background-color: chartreuse;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.card{
+    background-color: aqua;
+    width: 570px;
+    height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom{
+    background-color: blueviolet;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.grid{
+    width: 470px;
+    height: 470px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background: lightblue;
+}
+
+.gridButtons{
+    height: 150px;
+    width: 150px;
+}
+
+#xButton, #oButton{
+    height: 100px;
+    width: 100px;
+}
