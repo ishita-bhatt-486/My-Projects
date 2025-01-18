@@ -1,8 +1,7 @@
 let val=0;
-let game;
-//at the end of each loop turn the val into 1 or 0
+let game="running";
+let winner="none";
 
-//2D array- each tile=one element
 const arr= [
     ["","",""],
     ["","",""],
@@ -11,35 +10,55 @@ const arr= [
 
 const tiles = document.querySelectorAll(".tiles");
 
-    tiles.forEach(tiles => {
+tiles.forEach(tiles => {
         tiles.addEventListener("click", (event) => {
-
+          
             const row = event.target.getAttribute("data-row");
             const column = event.target.getAttribute("data-column");
     
+    //updating button text
+        
+    const updateText = document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
             console.log(`Button clicked at Row: ${row}, Column: ${column}`);
-            if (arr[r][c] !== "") {
+            if (arr[row][column] !== "") {
                 console.log("Tile already filled!");
-                return;
+                
             }
             else{
-            arr[row][column]=val;
-            }
+                arr[row][column]=val;
+                if (val===0){
+                    val=1;
+                    updateText.textContent = "X";
 
-            if (val===0){
-                val=1;
+                }
+                else if(val===1){
+                    val=0;
+                    updateText.textContent = "O";
+                }
             }
-            else if(val===1){
-                val=0;
-            }
-            // Update button text
-        });
+            console.log(game);
+//winning conditions
+           if (
+            //horizontal
+           (arr[0][0]===arr[0][1] && arr[0][0]===arr[0][2] && arr[0][0] !== "") ||
+           (arr[1][0]===arr[1][1] && arr[1][0]===arr[1][2] && arr[1][0] !== "") ||
+           (arr[2][0]===arr[2][1] && arr[2][0]===arr[2][2] && arr[2][0] !=="") ||
+
+           // columns
+
+           (arr[0][0]===arr[1][0] && arr[0][0]===arr[2][0] && arr[0][0] !=="") ||
+           (arr[0][1]===arr[1][1] && arr[0][1]===arr[2][1] && arr[0][1] !=="") ||
+           (arr[0][2]===arr[1][2] && arr[0][2]===arr[2][2] && arr[0][2] !== "") ||
+
+           //diagonals
+           (arr[0][0]===arr[1][1] && arr[0][0]===arr[2][2] && arr[0][0] !=="") ||
+           (arr[0][2]===arr[1][1] && arr[0][2]===arr[2][0] && arr[0][2] !=="")
+
+           ){
+            winner=val;
+            game="end";
+            
+           }
+            });
+
     });
-
-    
-
-    //add conditions to check if game win- use an array
-
-//add player names- option
-//disable the other one(x and o)- alternatively switch
-//end game when game=win

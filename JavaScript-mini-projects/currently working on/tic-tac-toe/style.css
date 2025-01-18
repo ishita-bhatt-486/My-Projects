@@ -1,6 +1,6 @@
 .top{
     background-color: chartreuse;
-    display: flex;
+    display: flex;/* Centers the inner div */
     align-items: center;
     justify-content: center;
     padding-top: 100px;
@@ -29,7 +29,7 @@
 
 .grid{
     width: 470px;
-    height: 470px;
+    height: 470px; /* 570px - (50px * 2) = 470px */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -44,4 +44,9 @@
 #xButton, #oButton{
     height: 100px;
     width: 100px;
+}
+
+button {
+ font-size: xx-large;
+ font-family: cursive;
 }
